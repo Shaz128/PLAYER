@@ -3,7 +3,8 @@ import os
 
 app = Flask(__name__)
 
-DOWNLOADS_FOLDER = "downloads"
+# Update the downloads folder path to point to the cloned repository
+DOWNLOADS_FOLDER = os.path.join(os.getcwd(), "YT_PREMIUM", "downloads")
 
 @app.route("/")
 def index():
@@ -16,9 +17,7 @@ def list_audio():
         if not os.path.exists(DOWNLOADS_FOLDER):
             return jsonify([])  # If folder doesn't exist, return an empty list
 
-        # Fix indentation: this should run regardless of whether the folder exists or not
         files = [f for f in os.listdir(DOWNLOADS_FOLDER) if f.endswith((".webm", ".mp3"))]
-
         print(files)
         return jsonify(files)
     except Exception as e:
