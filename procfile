@@ -1,2 +1,1 @@
-web: gunicorn app:app
-web: git clone https://github.com/shaz128/YT_PREMIUM.git downloads && gunicorn app:app
+web: gunicorn --bind :$PORT app:app
